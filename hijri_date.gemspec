@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = HijriDate::VERSION
   spec.authors       = ["Murtaza Gulamali"]
   spec.email         = ["mygulamali@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Class to store Hijri dates and convert them to/from Astronomical Julian Date.}
+  spec.summary       = %q{Hijri date object}
   spec.homepage      = ""
   spec.license       = "MIT"
 
