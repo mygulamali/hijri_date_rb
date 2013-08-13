@@ -31,6 +31,11 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal @ajd, @date.ajd
   end
 
+  def test_comparison
+    date = HijriDate::Date.new(@date.year, @date.month, @date.day)
+    assert @date == date
+  end
+
   def test_add
     assert_equal 21, (@date + 1).day
 
@@ -43,5 +48,9 @@ class HijriDateTest < MiniTest::Unit::TestCase
 
     date = HijriDate::Date.new(1433, 1, 1) - 1
     assert_equal HijriDate::Date.new(1432, 12, 29), date
+  end
+
+  def test_from_ajd
+    assert_equal @date, HijriDate.from_ajd(@ajd)
   end
 end
