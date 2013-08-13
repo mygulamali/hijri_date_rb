@@ -27,7 +27,7 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal 354, @date.day_of_year(HijriDate::Date.new(1432, 12, 29))
   end
 
-  def test_jd
+  def test_conversion_to_jd
     assert_equal @jd, @date.jd
   end
 
@@ -36,7 +36,7 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert @date == date
 
     assert_raises TypeError do
-      assert @date == Date.today
+      @date == Date.today
     end
   end
 
@@ -54,7 +54,7 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal HijriDate::Date.new(1432, 12, 29), date
   end
 
-  def test_jd
+  def test_conversion_from_jd
     assert_equal @date, HijriDate.jd(@jd)
   end
 
