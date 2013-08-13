@@ -70,6 +70,16 @@ module HijriDate
       end
       raise TypeError, 'expected numeric'
     end
+
+    # comparison operator
+    def == (date)
+      if date.year == self.year and
+          date.month == self.month and
+          date.day == self.day
+        return true
+      end
+      return false
+    end
   end
 
   # return new Hijri Date object associated with specified Astronomical Julian Day number
