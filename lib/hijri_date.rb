@@ -55,15 +55,18 @@ module HijriDate
       end
     end
 
-    # return Astronomical Julian Day number associated with this (or specified) Hijri date
-    def ajd(date = self)
-      return date.jd - 0.5
+    # comparison operator
+    def == (date)
+      if date.year == self.year and date.month == self.month and date.day == self.day
+        return true
+      end
+      return false
     end
 
     # return a new HijriDate object that is n days after the current one.
     def + (n)
       case n
-      when Numeric; return HijriDate.jd!(self.jd + n)
+      when Numeric; return HijriDate.jd(self.jd + n)
       end
       raise TypeError, 'expected numeric'
     end
@@ -71,24 +74,14 @@ module HijriDate
     # return a new HijriDate object that is n days before the current one.
     def - (n)
       case n
-      when Numeric; return HijriDate.jd!(self.jd - n)
+      when Numeric; return HijriDate.jd(self.jd - n)
       end
       raise TypeError, 'expected numeric'
-    end
-
-    # comparison operator
-    def == (date)
-      if date.year == self.year and
-          date.month == self.month and
-          date.day == self.day
-        return true
-      end
-      return false
     end
   end
 
   # return new Hijri Date object associated with specified Julian Day number
-  def HijriDate.jd!(jd = 1948084)
+  def HijriDate.jd(jd = 1948084)
     left = (jd - 1948084).to_i
     y30 = (left / 10631.0).floor
     left -= y30 * 10631
@@ -116,10 +109,5 @@ module HijriDate
     end
 
     return HijriDate::Date.new(year, month, day)
-  end
-
-  # return new Hijri Date object associated with specified Astronomical Julian Day number
-  def HijriDate.from_ajd(ajd = 1948083.5)
-    HijriDate.jd!(ajd + 0.5)
   end
 end

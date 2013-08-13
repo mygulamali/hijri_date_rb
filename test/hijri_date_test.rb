@@ -7,7 +7,6 @@ class HijriDateTest < MiniTest::Unit::TestCase
   def setup
     @date = HijriDate::Date.new  # 20/04/1432H = 25/03/2011AD
     @jd = Date.new(2011, 3, 25).jd
-    @ajd = @jd - 0.5
   end
 
   def test_kabisa_year
@@ -32,10 +31,6 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal @jd, @date.jd
   end
 
-  def test_ajd
-    assert_equal @ajd, @date.ajd
-  end
-
   def test_comparison
     date = HijriDate::Date.new(@date.year, @date.month, @date.day)
     assert @date == date
@@ -55,12 +50,8 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal HijriDate::Date.new(1432, 12, 29), date
   end
 
-  def test_jd!
-    assert_equal @date, HijriDate.jd!(@jd)
-  end
-
-  def test_from_ajd
-    assert_equal @date, HijriDate.from_ajd(@ajd)
+  def test_jd
+    assert_equal @date, HijriDate.jd(@jd)
   end
 
   def test_hijri_gregorian_conversion
@@ -69,7 +60,7 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal 3, date.month
     assert_equal 25, date.day
 
-    date = HijriDate.jd!(@jd)
+    date = HijriDate.jd(@jd)
     assert_equal 1432, date.year
     assert_equal 4, date.month
     assert_equal 20, date.day
