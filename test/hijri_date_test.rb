@@ -6,7 +6,8 @@ require 'minitest/pride'
 class HijriDateTest < MiniTest::Unit::TestCase
   def setup
     @date = HijriDate::Date.new  # 20/04/1432H = 25/03/2011AD
-    @ajd = Date.new(2011, 3, 25).jd - 0.5
+    @jd = Date.new(2011, 3, 25).jd
+    @ajd = @jd - 0.5
   end
 
   def test_kabisa_year
@@ -25,6 +26,10 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal  10, @date.day_of_year(HijriDate::Date.new(1432, 1, 10))
     assert_equal 355, @date.day_of_year(HijriDate::Date.new(1431, 12, 30))
     assert_equal 354, @date.day_of_year(HijriDate::Date.new(1432, 12, 29))
+  end
+
+  def test_jd
+    assert_equal @jd, @date.jd
   end
 
   def test_ajd
@@ -48,6 +53,10 @@ class HijriDateTest < MiniTest::Unit::TestCase
 
     date = HijriDate::Date.new(1433, 1, 1) - 1
     assert_equal HijriDate::Date.new(1432, 12, 29), date
+  end
+
+  def test_jd!
+    assert_equal @date, HijriDate.jd!(@jd)
   end
 
   def test_from_ajd

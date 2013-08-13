@@ -45,20 +45,25 @@ module HijriDate
       return HijriDate::DAYSINYEAR[date.month - 2] + date.day
     end
     
-    # return Astronomical Julian Day number associated with this (or specified) Hijri date
-    def ajd(date = self)
+    # return Julian Day number associated with this (or specified) Hijri date
+    def jd(date = self)
       y30 = (date.year / 30.0).floor
       if (date.year % 30 == 0)
-        return 1948083.5 + y30*10631 + day_of_year(date)
+        return 1948084 + y30*10631 + day_of_year(date)
       else
-        return 1948083.5 + y30*10631 + HijriDate::DAYSIN30YEARS[date.year-y30*30-1] + day_of_year(date)
+        return 1948084 + y30*10631 + HijriDate::DAYSIN30YEARS[date.year-y30*30-1] + day_of_year(date)
       end
     end
-    
+
+    # return Astronomical Julian Day number associated with this (or specified) Hijri date
+    def ajd(date = self)
+      return date.jd - 0.5
+    end
+
     # return a new HijriDate object that is n days after the current one.
     def + (n)
       case n
-      when Numeric; return HijriDate.from_ajd(self.ajd + n)
+      when Numeric; return HijriDate.jd!(self.jd + n)
       end
       raise TypeError, 'expected numeric'
     end
@@ -66,7 +71,7 @@ module HijriDate
     # return a new HijriDate object that is n days before the current one.
     def - (n)
       case n
-      when Numeric; return HijriDate.from_ajd(self.ajd - n)
+      when Numeric; return HijriDate.jd!(self.jd - n)
       end
       raise TypeError, 'expected numeric'
     end
@@ -82,9 +87,9 @@ module HijriDate
     end
   end
 
-  # return new Hijri Date object associated with specified Astronomical Julian Day number
-  def HijriDate.from_ajd(ajd = 1948083.5)
-    left = (ajd - 1948083.5).to_i
+  # return new Hijri Date object associated with specified Julian Day number
+  def HijriDate.jd!(jd = 1948084)
+    left = (jd - 1948084).to_i
     y30 = (left / 10631.0).floor
     left -= y30 * 10631
     i = 0
@@ -111,5 +116,10 @@ module HijriDate
     end
 
     return HijriDate::Date.new(year, month, day)
+  end
+
+  # return new Hijri Date object associated with specified Astronomical Julian Day number
+  def HijriDate.from_ajd(ajd = 1948083.5)
+    HijriDate.jd!(ajd + 0.5)
   end
 end
