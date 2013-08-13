@@ -57,10 +57,13 @@ module HijriDate
 
     # comparison operator
     def == (date)
-      if date.year == self.year and date.month == self.month and date.day == self.day
-        return true
+      if date.is_a?(HijriDate::Date)
+        if date.year == self.year and date.month == self.month and date.day == self.day
+          return true
+        end
+        return false
       end
-      return false
+      raise TypeError, 'expected HijriDate::Date'
     end
 
     # return a new HijriDate object that is n days after the current one.

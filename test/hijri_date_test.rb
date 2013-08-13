@@ -34,6 +34,10 @@ class HijriDateTest < MiniTest::Unit::TestCase
   def test_comparison
     date = HijriDate::Date.new(@date.year, @date.month, @date.day)
     assert @date == date
+
+    assert_raises TypeError do
+      assert @date == Date.today
+    end
   end
 
   def test_add
