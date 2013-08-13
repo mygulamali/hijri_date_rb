@@ -62,4 +62,16 @@ class HijriDateTest < MiniTest::Unit::TestCase
   def test_from_ajd
     assert_equal @date, HijriDate.from_ajd(@ajd)
   end
+
+  def test_hijri_gregorian_conversion
+    date = Date.jd(@date.jd)
+    assert_equal 2011, date.year
+    assert_equal 3, date.month
+    assert_equal 25, date.day
+
+    date = HijriDate.jd!(@jd)
+    assert_equal 1432, date.year
+    assert_equal 4, date.month
+    assert_equal 20, date.day
+  end
 end
