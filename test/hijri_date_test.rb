@@ -6,7 +6,6 @@ require 'minitest/pride'
 class HijriDateTest < MiniTest::Unit::TestCase
   def setup
     @date = HijriDate::Date.new  # 20/04/1432H = 25/03/2011AD
-    @jd = Date.new(2011, 3, 25).jd
   end
 
   def test_kabisa_year
@@ -22,18 +21,20 @@ class HijriDateTest < MiniTest::Unit::TestCase
 
   def test_day_of_year
     assert_equal 109, @date.day_of_year
-    assert_equal  10, @date.day_of_year(HijriDate::Date.new(1432, 1, 10))
-    assert_equal 355, @date.day_of_year(HijriDate::Date.new(1431, 12, 30))
-    assert_equal 354, @date.day_of_year(HijriDate::Date.new(1432, 12, 29))
+    assert_equal  10, HijriDate::Date.new(1432, 1, 10).day_of_year
+    assert_equal 355, HijriDate::Date.new(1431, 12, 30).day_of_year
+    assert_equal 354, HijriDate::Date.new(1432, 12, 29).day_of_year
   end
 
   def test_conversion_to_jd
-    assert_equal @jd, @date.jd
+    assert_equal 2455646, @date.jd
   end
 
   def test_comparison
-    date = HijriDate::Date.new(@date.year, @date.month, @date.day)
-    assert @date == date
+    assert @date == HijriDate::Date.new(@date.year, @date.month, @date.day)
+    refute @date == HijriDate::Date.new(@date.year + 1, @date.month, @date.day)
+    refute @date == HijriDate::Date.new(@date.year, @date.month + 1, @date.day)
+    refute @date == HijriDate::Date.new(@date.year, @date.month, @date.day + 1)
 
     assert_raises TypeError do
       @date == Date.today
@@ -55,7 +56,7 @@ class HijriDateTest < MiniTest::Unit::TestCase
   end
 
   def test_conversion_from_jd
-    assert_equal @date, HijriDate.jd(@jd)
+    assert_equal @date, HijriDate.jd(2455646)
   end
 
   def test_hijri_gregorian_conversion
@@ -64,7 +65,7 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal 3, date.month
     assert_equal 25, date.day
 
-    date = HijriDate.jd(@jd)
+    date = HijriDate.jd(Date.new(2011, 3, 25).jd)
     assert_equal 1432, date.year
     assert_equal 4, date.month
     assert_equal 20, date.day
