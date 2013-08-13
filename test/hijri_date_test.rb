@@ -42,6 +42,6 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal 19, (@date - 1).day
 
     date = HijriDate::Date.new(1433, 1, 1) - 1
-    assert_equal HijriDate::Date(1432, 12, 29), date
+    assert_equal HijriDate::Date.new(1432, 12, 29), date
   end
 end
