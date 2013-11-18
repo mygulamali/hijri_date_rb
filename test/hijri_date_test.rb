@@ -70,4 +70,8 @@ class HijriDateTest < MiniTest::Unit::TestCase
     assert_equal 4, date.month
     assert_equal 20, date.day
   end
+
+  def test_day_of_week
+    assert_equal 5, @date.wday  # Friday
+  end
 end

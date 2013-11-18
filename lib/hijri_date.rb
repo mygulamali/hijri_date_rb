@@ -81,6 +81,11 @@ module HijriDate
       end
       raise TypeError, 'expected numeric'
     end
+
+    # return the day of the week (0-6, Sunday is zero)
+    def wday
+      Object::Date.jd(self.jd).wday
+    end 
   end
 
   # return new Hijri Date object associated with specified Julian Day number
