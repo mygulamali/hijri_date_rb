@@ -16,7 +16,7 @@ module HijriDate
     
     # convert to string object
     def to_s(date = self)
-      return "#{date.day} #{HijriDate::MONTHNAMES[date.month]} #{date.year}H"
+      return "#{date.day} #{HijriDate::MONTHNAMES_EN[date.month]} #{date.year}H"
     end
     
     # is this (or the specified) year a Kabisa year?
