@@ -13,12 +13,12 @@ module HijriDate
       @month = month
       @day = day
     end
-    
+
     # convert to string object
     def to_s(date = self)
       return "#{date.day} #{HijriDate::MONTHNAMES_EN[date.month]} #{date.year}H"
     end
-    
+
     # is this (or the specified) year a Kabisa year?
     def is_kabisa?(year = self.year)
       for i in [2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29]
@@ -28,23 +28,23 @@ module HijriDate
       end
       return false
     end
-    
+
     # number of days in this (or the specified) month and year
     def days_in_month(month = self.month, year = self.year)
       if (month == 12 and is_kabisa?(year)) or (month % 2 == 1)
         return 30
       end
-      return 29         
+      return 29
     end
 
-    # day of the year corresponding to this (or specified) Hijri date   
+    # day of the year corresponding to this (or specified) Hijri date
     def day_of_year(date = self)
       if date.month == 1
         return date.day
       end
       return HijriDate::DAYSINYEAR[date.month - 2] + date.day
     end
-    
+
     # return Julian Day number associated with this (or specified) Hijri date
     def jd(date = self)
       y30 = (date.year / 30.0).floor
@@ -85,7 +85,7 @@ module HijriDate
     # return the day of the week (0-6, Sunday is zero)
     def wday
       Object::Date.jd(self.jd).wday
-    end 
+    end
   end
 
   # return new Hijri Date object associated with specified Julian Day number

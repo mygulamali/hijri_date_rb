@@ -32,7 +32,7 @@ module HijriDate
     'Zilqadah al-Haraam',
     'Zilhaj al-Haraam'
   ]
-  
+
   SHORT_MONTHNAMES_EN = [
     nil,
     'Moharram',
