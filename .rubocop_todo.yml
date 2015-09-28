@@ -20,12 +20,6 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Max: 20
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/ClassMethods:
-  Exclude:
-    - 'lib/hijri_date.rb'
-
 # Offense count: 2
 Style/OpMethod:
   Exclude:

@@ -85,7 +85,7 @@ module HijriDate
   end
 
   # return new Hijri Date object associated with specified Julian Day number
-  def HijriDate.jd(jd = 1948084)
+  def self.jd(jd = 1948084)
     left = (jd - 1948084).to_i
     y30 = (left / 10631.0).floor
     left -= y30 * 10631
