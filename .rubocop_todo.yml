@@ -53,9 +53,3 @@ Style/PredicateName:
 Style/SpaceBeforeComma:
   Exclude:
     - 'lib/hijri_date.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/SpecialGlobalVars:
-  Exclude:
-    - 'hijri_date.gemspec'
