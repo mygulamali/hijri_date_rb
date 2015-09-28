@@ -62,12 +62,6 @@ Style/SpecialGlobalVars:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Style/WhenThen:
-  Exclude:
-    - 'lib/hijri_date.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
 # Configuration parameters: MaxLineLength.
 Style/WhileUntilModifier:
   Exclude:

@@ -63,7 +63,8 @@ module HijriDate
     # return a new HijriDate object that is n days after the current one.
     def +(n)
       case n
-      when Numeric; return HijriDate.jd(jd + n)
+      when Numeric
+        return HijriDate.jd(jd + n)
       end
       fail TypeError, 'expected numeric'
     end
@@ -71,7 +72,8 @@ module HijriDate
     # return a new HijriDate object that is n days before the current one.
     def -(n)
       case n
-      when Numeric; return HijriDate.jd(jd - n)
+      when Numeric
+        return HijriDate.jd(jd - n)
       end
       fail TypeError, 'expected numeric'
     end
