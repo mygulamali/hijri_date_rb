@@ -57,7 +57,7 @@ module HijriDate
         end
         return false
       end
-      raise TypeError, 'expected HijriDate::Date'
+      fail TypeError, 'expected HijriDate::Date'
     end
 
     # return a new HijriDate object that is n days after the current one.
@@ -65,7 +65,7 @@ module HijriDate
       case n
       when Numeric; return HijriDate.jd(jd + n)
       end
-      raise TypeError, 'expected numeric'
+      fail TypeError, 'expected numeric'
     end
 
     # return a new HijriDate object that is n days before the current one.
@@ -73,7 +73,7 @@ module HijriDate
       case n
       when Numeric; return HijriDate.jd(jd - n)
       end
-      raise TypeError, 'expected numeric'
+      fail TypeError, 'expected numeric'
     end
 
     # return the day of the week (0-6, Sunday is zero)
