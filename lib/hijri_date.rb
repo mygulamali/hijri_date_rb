@@ -50,7 +50,7 @@ module HijriDate
     end
 
     # comparison operator
-    def == (other)
+    def ==(other)
       if other.is_a?(HijriDate::Date)
         if other.year == year && other.month == month && other.day == day
           return true
@@ -61,7 +61,7 @@ module HijriDate
     end
 
     # return a new HijriDate object that is n days after the current one.
-    def + (n)
+    def +(n)
       case n
       when Numeric; return HijriDate.jd(jd + n)
       end
@@ -69,7 +69,7 @@ module HijriDate
     end
 
     # return a new HijriDate object that is n days before the current one.
-    def - (n)
+    def -(n)
       case n
       when Numeric; return HijriDate.jd(jd - n)
       end

@@ -67,12 +67,6 @@ Style/SignalException:
   Exclude:
     - 'lib/hijri_date.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-Style/SpaceAfterMethodName:
-  Exclude:
-    - 'lib/hijri_date.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/SpaceBeforeComma:
