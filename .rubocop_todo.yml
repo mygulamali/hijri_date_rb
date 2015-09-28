@@ -41,9 +41,3 @@ Style/For:
 Style/OpMethod:
   Exclude:
     - 'lib/hijri_date.rb'
-
-# Offense count: 1
-# Configuration parameters: NamePrefix, NamePrefixBlacklist.
-Style/PredicateName:
-  Exclude:
-    - 'lib/hijri_date.rb'

@@ -9,8 +9,8 @@ class HijriDateTest < MiniTest::Test
   end
 
   def test_kabisa_year
-    refute @date.is_kabisa?
-    assert @date.is_kabisa? 1431
+    refute @date.kabisa?
+    assert @date.kabisa? 1431
   end
 
   def test_days_in_month
