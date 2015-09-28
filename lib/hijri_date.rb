@@ -16,7 +16,7 @@ module HijriDate
 
     # convert to string object
     def to_s(date = self)
-      return "#{date.day} #{HijriDate::MONTHNAMES_EN[date.month]} #{date.year}H"
+      "#{date.day} #{HijriDate::MONTHNAMES_EN[date.month]} #{date.year}H"
     end
 
     # is this (or the specified) year a Kabisa year?
@@ -26,7 +26,7 @@ module HijriDate
           return true
         end
       end
-      return false
+      false
     end
 
     # number of days in this (or the specified) month and year
@@ -34,7 +34,7 @@ module HijriDate
       if (month == 12 and is_kabisa?(year)) or (month % 2 == 1)
         return 30
       end
-      return 29
+      29
     end
 
     # day of the year corresponding to this (or specified) Hijri date
@@ -42,7 +42,7 @@ module HijriDate
       if date.month == 1
         return date.day
       end
-      return HijriDate::DAYSINYEAR[date.month - 2] + date.day
+      HijriDate::DAYSINYEAR[date.month - 2] + date.day
     end
 
     # return Julian Day number associated with this (or specified) Hijri date
@@ -116,6 +116,6 @@ module HijriDate
       day = left.to_i
     end
 
-    return HijriDate::Date.new(year, month, day)
+    HijriDate::Date.new(year, month, day)
   end
 end
