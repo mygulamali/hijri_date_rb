@@ -49,9 +49,9 @@ module HijriDate
     def jd(date = self)
       y30 = (date.year / 30.0).floor
       if (date.year % 30 == 0)
-        return 1948084 + y30*10631 + day_of_year(date)
+        return 1948084 + y30 * 10631 + day_of_year(date)
       else
-        return 1948084 + y30*10631 + HijriDate::DAYSIN30YEARS[date.year-y30*30-1] + day_of_year(date)
+        return 1948084 + y30 * 10631 + HijriDate::DAYSIN30YEARS[date.year - y30 * 30 - 1] + day_of_year(date)
       end
     end
 
@@ -100,7 +100,7 @@ module HijriDate
     end
     year = (y30 * 30.0 + i).to_i
 
-    if i>0
+    if i > 0
       left -= HijriDate::DAYSIN30YEARS[i - 1]
     end
     i = 0
@@ -110,7 +110,7 @@ module HijriDate
     end
     month = (i + 1).to_i
 
-    if i>0
+    if i > 0
       day = (left - HijriDate::DAYSINYEAR[i - 1]).to_i
     else
       day = left.to_i
