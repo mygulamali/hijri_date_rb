@@ -58,7 +58,7 @@ module HijriDate
     # comparison operator
     def == (date)
       if date.is_a?(HijriDate::Date)
-        if date.year == self.year and date.month == self.month and date.day == self.day
+        if date.year == year and date.month == month and date.day == day
           return true
         end
         return false
@@ -69,7 +69,7 @@ module HijriDate
     # return a new HijriDate object that is n days after the current one.
     def + (n)
       case n
-      when Numeric; return HijriDate.jd(self.jd + n)
+      when Numeric; return HijriDate.jd(jd + n)
       end
       raise TypeError, 'expected numeric'
     end
@@ -77,14 +77,14 @@ module HijriDate
     # return a new HijriDate object that is n days before the current one.
     def - (n)
       case n
-      when Numeric; return HijriDate.jd(self.jd - n)
+      when Numeric; return HijriDate.jd(jd - n)
       end
       raise TypeError, 'expected numeric'
     end
 
     # return the day of the week (0-6, Sunday is zero)
     def wday
-      Object::Date.jd(self.jd).wday
+      Object::Date.jd(jd).wday
     end
   end
 

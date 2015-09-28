@@ -95,12 +95,6 @@ Style/RedundantReturn:
   Exclude:
     - 'lib/hijri_date.rb'
 
-# Offense count: 6
-# Cop supports --auto-correct.
-Style/RedundantSelf:
-  Exclude:
-    - 'lib/hijri_date.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
