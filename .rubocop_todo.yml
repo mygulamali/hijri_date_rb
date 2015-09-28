@@ -26,12 +26,6 @@ Style/ClassMethods:
   Exclude:
     - 'lib/hijri_date.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/EvenOdd:
-  Exclude:
-    - 'lib/hijri_date.rb'
-
 # Offense count: 2
 Style/OpMethod:
   Exclude:
