@@ -21,7 +21,7 @@ module HijriDate
 
     # is this (or the specified) year a Kabisa year?
     def kabisa?(year = self.year)
-      for i in [2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29]
+      [2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29].each do |i|
         return true if year % 30 == i
       end
       false
