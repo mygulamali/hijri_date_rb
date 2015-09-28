@@ -3,7 +3,7 @@ require 'hijri_date'
 require 'minitest/autorun'
 require 'minitest/pride'
 
-class HijriDateTest < MiniTest::Unit::TestCase
+class HijriDateTest < MiniTest::Test
   def setup
     @date = HijriDate::Date.new  # 20/04/1432H = 25/03/2011AD
   end
