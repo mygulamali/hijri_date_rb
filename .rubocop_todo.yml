@@ -31,13 +31,6 @@ Style/AlignArray:
   Exclude:
     - 'lib/hijri_date/constants.rb'
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/AndOr:
-  Exclude:
-    - 'lib/hijri_date.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/ClassMethods:

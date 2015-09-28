@@ -31,7 +31,7 @@ module HijriDate
 
     # number of days in this (or the specified) month and year
     def days_in_month(month = self.month, year = self.year)
-      if (month == 12 and is_kabisa?(year)) or (month % 2 == 1)
+      if month == 12 && is_kabisa?(year) || month % 2 == 1
         return 30
       end
       29
@@ -58,7 +58,7 @@ module HijriDate
     # comparison operator
     def == (date)
       if date.is_a?(HijriDate::Date)
-        if date.year == year and date.month == month and date.day == day
+        if date.year == year && date.month == month && date.day == day
           return true
         end
         return false
