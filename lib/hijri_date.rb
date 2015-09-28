@@ -50,9 +50,9 @@ module HijriDate
     end
 
     # comparison operator
-    def == (date)
-      if date.is_a?(HijriDate::Date)
-        if date.year == year && date.month == month && date.day == day
+    def == (other)
+      if other.is_a?(HijriDate::Date)
+        if other.year == year && other.month == month && other.day == day
           return true
         end
         return false
