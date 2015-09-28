@@ -91,17 +91,13 @@ module HijriDate
     left -= y30 * 10631
     i = 0
 
-    while left > HijriDate::DAYSIN30YEARS[i]
-      i += 1
-    end
+    i += 1 while left > HijriDate::DAYSIN30YEARS[i]
     year = (y30 * 30.0 + i).to_i
 
     left -= HijriDate::DAYSIN30YEARS[i - 1] if i > 0
     i = 0
 
-    while left > HijriDate::DAYSINYEAR[i]
-      i += 1
-    end
+    i += 1 while left > HijriDate::DAYSINYEAR[i]
     month = (i + 1).to_i
 
     if i > 0

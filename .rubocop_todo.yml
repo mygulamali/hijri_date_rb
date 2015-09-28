@@ -59,10 +59,3 @@ Style/SpaceBeforeComma:
 Style/SpecialGlobalVars:
   Exclude:
     - 'hijri_date.gemspec'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: MaxLineLength.
-Style/WhileUntilModifier:
-  Exclude:
-    - 'lib/hijri_date.rb'
