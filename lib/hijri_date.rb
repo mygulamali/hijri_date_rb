@@ -1,6 +1,6 @@
-require "hijri_date/version"
-require "hijri_date/month_names"
-require "hijri_date/constants"
+require 'hijri_date/version'
+require 'hijri_date/month_names'
+require 'hijri_date/constants'
 
 module HijriDate
   class Date
