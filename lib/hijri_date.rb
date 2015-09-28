@@ -22,26 +22,20 @@ module HijriDate
     # is this (or the specified) year a Kabisa year?
     def is_kabisa?(year = self.year)
       for i in [2, 5, 8, 10, 13, 16, 19, 21, 24, 27, 29]
-        if year % 30 == i
-          return true
-        end
+        return true if year % 30 == i
       end
       false
     end
 
     # number of days in this (or the specified) month and year
     def days_in_month(month = self.month, year = self.year)
-      if month == 12 && is_kabisa?(year) || month % 2 == 1
-        return 30
-      end
+      return 30 if month == 12 && is_kabisa?(year) || month % 2 == 1
       29
     end
 
     # day of the year corresponding to this (or specified) Hijri date
     def day_of_year(date = self)
-      if date.month == 1
-        return date.day
-      end
+      return date.day if date.month == 1
       HijriDate::DAYSINYEAR[date.month - 2] + date.day
     end
 
@@ -100,9 +94,7 @@ module HijriDate
     end
     year = (y30 * 30.0 + i).to_i
 
-    if i > 0
-      left -= HijriDate::DAYSIN30YEARS[i - 1]
-    end
+    left -= HijriDate::DAYSIN30YEARS[i - 1] if i > 0
     i = 0
 
     while left > HijriDate::DAYSINYEAR[i]

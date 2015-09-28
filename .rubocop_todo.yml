@@ -48,13 +48,6 @@ Style/EvenOdd:
 Style/For:
   EnforcedStyle: for
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: MaxLineLength.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'lib/hijri_date.rb'
-
 # Offense count: 3
 Style/OpMethod:
   Exclude:
