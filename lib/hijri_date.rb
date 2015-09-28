@@ -8,7 +8,7 @@ module HijriDate
     attr_accessor :year, :month, :day
 
     # constructor
-    def initialize(year = 1432, month = 4 , day = 20)
+    def initialize(year = 1432, month = 4, day = 20)
       @year = year
       @month = month
       @day = day
