@@ -21,10 +21,7 @@ module HijriDate
 
     # is this (or the specified) year a Kabisa year?
     def kabisa?(year = self.year)
-      KABISA_YEAR_REMAINDERS.each do |i|
-        return true if year % 30 == i
-      end
-      false
+      KABISA_YEAR_REMAINDERS.any? { |remainder| year % 30 == remainder }
     end
 
     # number of days in this (or the specified) month and year
