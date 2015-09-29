@@ -49,10 +49,7 @@ module HijriDate
     # comparison operator
     def ==(other)
       if other.is_a?(Date)
-        if other.year == year && other.month == month && other.day == day
-          return true
-        end
-        return false
+        return other.year == year && other.month == month && other.day == day
       end
       fail TypeError, 'expected HijriDate::Date'
     end
