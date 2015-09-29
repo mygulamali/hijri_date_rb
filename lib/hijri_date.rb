@@ -37,10 +37,12 @@ module HijriDate
     # return Julian Day number associated with this (or specified) Hijri date
     def jd(date = self)
       y30 = (date.year / 30.0).floor
-      if (date.year % 30 == 0)
-        return 1948084 + y30 * 10631 + day_of_year(date)
+      day_number = 1948084 + y30 * 10631 + day_of_year(date)
+
+      if date.year % 30 == 0
+        day_number
       else
-        return 1948084 + y30 * 10631 + DAYS_IN_30_YEARS[date.year - y30 * 30 - 1] + day_of_year(date)
+        day_number + DAYS_IN_30_YEARS[date.year - y30 * 30 - 1]
       end
     end
 
