@@ -16,7 +16,7 @@ module HijriDate
 
     # convert to string object
     def to_s(date = self)
-      "#{date.day} #{HijriDate::MONTHNAMES_EN[date.month]} #{date.year}H"
+      "#{date.day} #{MONTHNAMES_EN[date.month]} #{date.year}H"
     end
 
     # is this (or the specified) year a Kabisa year?
@@ -36,7 +36,7 @@ module HijriDate
     # day of the year corresponding to this (or specified) Hijri date
     def day_of_year(date = self)
       return date.day if date.month == 1
-      HijriDate::DAYS_IN_YEAR[date.month - 2] + date.day
+      DAYS_IN_YEAR[date.month - 2] + date.day
     end
 
     # return Julian Day number associated with this (or specified) Hijri date
@@ -45,13 +45,13 @@ module HijriDate
       if (date.year % 30 == 0)
         return 1948084 + y30 * 10631 + day_of_year(date)
       else
-        return 1948084 + y30 * 10631 + HijriDate::DAYS_IN_30_YEARS[date.year - y30 * 30 - 1] + day_of_year(date)
+        return 1948084 + y30 * 10631 + DAYS_IN_30_YEARS[date.year - y30 * 30 - 1] + day_of_year(date)
       end
     end
 
     # comparison operator
     def ==(other)
-      if other.is_a?(HijriDate::Date)
+      if other.is_a?(Date)
         if other.year == year && other.month == month && other.day == day
           return true
         end
@@ -91,21 +91,21 @@ module HijriDate
     left -= y30 * 10631
     i = 0
 
-    i += 1 while left > HijriDate::DAYS_IN_30_YEARS[i]
+    i += 1 while left > DAYS_IN_30_YEARS[i]
     year = (y30 * 30.0 + i).to_i
 
-    left -= HijriDate::DAYS_IN_30_YEARS[i - 1] if i > 0
+    left -= DAYS_IN_30_YEARS[i - 1] if i > 0
     i = 0
 
-    i += 1 while left > HijriDate::DAYS_IN_YEAR[i]
+    i += 1 while left > DAYS_IN_YEAR[i]
     month = (i + 1).to_i
 
     if i > 0
-      day = (left - HijriDate::DAYS_IN_YEAR[i - 1]).to_i
+      day = (left - DAYS_IN_YEAR[i - 1]).to_i
     else
       day = left.to_i
     end
 
-    HijriDate::Date.new(year, month, day)
+    Date.new(year, month, day)
   end
 end
