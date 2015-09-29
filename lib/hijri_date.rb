@@ -26,8 +26,7 @@ module HijriDate
 
     # number of days in this (or the specified) month and year
     def days_in_month(month = self.month, year = self.year)
-      return 30 if month == 12 && kabisa?(year) || month.odd?
-      29
+      (month == 12 && kabisa?(year) || month.odd?) ? 30 : 29
     end
 
     # day of the year corresponding to this (or specified) Hijri date
