@@ -31,8 +31,7 @@ module HijriDate
 
     # day of the year corresponding to this (or specified) Hijri date
     def day_of_year(date = self)
-      return date.day if date.month == 1
-      DAYS_IN_YEAR[date.month - 2] + date.day
+      date.month == 1 ? date.day : (DAYS_IN_YEAR[date.month - 2] + date.day)
     end
 
     # return Julian Day number associated with this (or specified) Hijri date
