@@ -83,22 +83,18 @@ module HijriDate
     left = (jd - 1948084).to_i
     y30 = (left / 10631.0).floor
     left -= y30 * 10631
-    i = 0
 
+    i = 0
     i += 1 while left > DAYS_IN_30_YEARS[i]
-    year = (y30 * 30.0 + i).to_i
 
+    year = (y30 * 30 + i).to_i
     left -= DAYS_IN_30_YEARS[i - 1] if i > 0
+
     i = 0
-
     i += 1 while left > DAYS_IN_YEAR[i]
-    month = (i + 1).to_i
 
-    if i > 0
-      day = (left - DAYS_IN_YEAR[i - 1]).to_i
-    else
-      day = left.to_i
-    end
+    month = (i + 1).to_i
+    day = i > 0 ? (left - DAYS_IN_YEAR[i - 1]) : left
 
     Date.new(year, month, day)
   end
