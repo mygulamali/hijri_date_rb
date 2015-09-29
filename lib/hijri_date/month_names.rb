@@ -34,6 +34,9 @@ module HijriDate
     ]
   }
 
+  MONTHNAMES_AR = MONTH_NAMES[:ar]
+  MONTHNAMES_EN = MONTH_NAMES[:en]
+
   SHORT_MONTH_NAMES = {
     en: [
       nil,
@@ -51,4 +54,6 @@ module HijriDate
       'Zilhaj'
     ]
   }
+
+  SHORT_MONTHNAMES_EN = SHORT_MONTH_NAMES[:en]
 end
