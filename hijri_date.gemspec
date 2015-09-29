@@ -4,6 +4,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'hijri_date/version'
 
 Gem::Specification.new do |spec|
+  spec.required_ruby_version = '>= 2.0'
+
   spec.name          = 'hijri_date'
   spec.version       = HijriDate::VERSION
   spec.authors       = ['Murtaza Gulamali']
